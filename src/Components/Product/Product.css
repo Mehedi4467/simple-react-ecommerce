@@ -1,0 +1,13 @@
+.productImage img {
+    transition-duration: 1s;
+    height: 300px;
+
+}
+
+.productImage img:hover {
+    transform: scale(1.1);
+}
+
+.price i {
+    color: yellow;
+}
