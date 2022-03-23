@@ -1,17 +1,17 @@
 import React from 'react';
 import './Product.css';
 
-const Product = (props) => {
-
+const Product = ({ data, cartHandler }) => {
+    // console.log(cartHandler);
     return (
         <div className='col-6 col-md-3 my-5 p-4'>
             <div className='productImage'>
-                <img className='img-fluid' src={props.data.image} alt="" />
+                <img className='img-fluid' src={data.image} alt="" />
             </div>
             <div className='text-center mt-4'>
-                <p className='text-truncate'>{props.data.title}</p>
-                <p className='price'><span className='text-primary'>${props.data.rating.count}</span> {props.data.rating.rate}<i className="fa-solid fa-star"></i></p>
-                <button className='btn btn-primary'>Buy Now</button>
+                <p className='text-truncate'>{data.title}</p>
+                <p className='price'><span className='text-primary'>${data.rating.count}</span> {data.rating.rate}<i className="fa-solid fa-star"></i></p>
+                <button onClick={() => cartHandler(data)} className='btn btn-primary'>Add Cart</button>
             </div>
 
         </div>

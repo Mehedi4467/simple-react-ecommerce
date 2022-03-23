@@ -1,0 +1,29 @@
+.cart {
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
+    right: 0;
+    width: 80px;
+}
+
+.cart-body {
+    padding: 20px;
+
+}
+
+.quantity {
+    display: flex;
+    justify-content: right;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.quantity p {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
