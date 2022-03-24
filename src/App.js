@@ -5,16 +5,38 @@ import Categorys from './Components/Categorys/Categorys';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Products from './Components/Products/Products';
+import { addLocalStore, deleteShoppingCart, getLocalStore, removeFromDb } from './Utilities/fakeSb';
 
 function App() {
   const [products, setPoducts] = useState([]);
+
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(product => setPoducts(product))
   }, []);
 
+
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const storeCart = getLocalStore();
+    const saveCart = [];
+    for (const id in storeCart) {
+
+      const storeProduct = products.find(product => product.id === +id);
+      if (storeProduct) {
+        const quantity = storeCart[id];
+        storeProduct.rating.count = quantity;
+        saveCart.push(storeProduct);
+      }
+
+
+    }
+    setCart(saveCart);
+
+
+  }, [products]);
 
   const cartHandler = (product) => {
     let newCart = [];
@@ -32,13 +54,15 @@ function App() {
 
     }
     setCart(newCart);
+    addLocalStore(product.id);
 
   };
 
   const deleteAll = () => {
-
+    deleteShoppingCart();
     const newCart = [];
     setCart(newCart);
+
 
   };
 
@@ -50,13 +74,10 @@ function App() {
     if (deleteIndex) {
       newCart.splice(deleteIndex, 1);
     }
+    removeFromDb(id);
     setCart(newCart);
 
   }
-
-
-
-
 
   return (
     <div>

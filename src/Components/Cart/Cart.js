@@ -9,9 +9,6 @@ import 'react-pure-modal/dist/react-pure-modal.min.css';
 
 const Cart = ({ cart, deleteAll, singleCartRemove }) => {
     const [modal, setModal] = useState(false);
-    console.log(cart);
-
-
 
     return (
         <div className='cart'>
