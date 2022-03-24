@@ -27,3 +27,63 @@
     justify-content: center;
     align-items: flex-end;
 }
+
+.button {
+    cursor: pointer;
+}
+
+.btn-cart {
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff1a1a;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.btn-cart:hover {
+    background-color: #ff6666;
+    color: black;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.product-list th,
+td {
+    padding: 5px;
+    text-align: center;
+}
+
+.pure-modal .panel-body {
+    width: 100%;
+    word-break: normal;
+}
+
+.grand-total {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    justify-content: end;
+}
+
+.item-delete {
+    margin-top: 20px;
+    height: 25px;
+    width: 25px;
+    color: #fff;
+    background: blue;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item-delete:hover {
+    background-color: red;
+}

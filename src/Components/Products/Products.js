@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 
 const Products = ({ products, cartHandler }) => {

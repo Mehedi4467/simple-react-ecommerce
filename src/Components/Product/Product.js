@@ -10,7 +10,7 @@ const Product = ({ data, cartHandler }) => {
             </div>
             <div className='text-center mt-4'>
                 <p className='text-truncate'>{data.title}</p>
-                <p className='price'><span className='text-primary'>${data.rating.count}</span> {data.rating.rate}<i className="fa-solid fa-star"></i></p>
+                <p className='price'><span className='text-primary'>${data.price}</span> {data.rating.rate}<i className="fa-solid fa-star"></i></p>
                 <button onClick={() => cartHandler(data)} className='btn btn-primary'>Add Cart</button>
             </div>
 

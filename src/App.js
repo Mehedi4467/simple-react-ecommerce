@@ -1,4 +1,4 @@
-
+import './App.css';
 import { useState, useEffect } from 'react';
 import Cart from './Components/Cart/Cart';
 import Categorys from './Components/Categorys/Categorys';
@@ -17,19 +17,54 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const cartHandler = (product) => {
+    let newCart = [];
+    const exists = cart.find((cartProduct) => product.id === cartProduct.id);
+    if (!exists) {
+      product.rating.count = 1;
+      newCart = [...cart, product];
 
-    const newCart = [...cart, product];
+    }
+    else {
+      const rest = cart.filter(cartProduct => cartProduct.id !== product.id);
+      product.rating.count += 1;
+
+      newCart = [...rest, exists];
+
+    }
     setCart(newCart);
 
   };
 
+  const deleteAll = () => {
+
+    const newCart = [];
+    setCart(newCart);
+
+  };
+
+  const singleCartRemove = (id) => {
+
+    const deleteIndex = cart.map((deleteProduct, index) => deleteProduct.id === id ? index : false);
+    let newCart = [...cart];
+    console.log(deleteIndex);
+    if (deleteIndex) {
+      newCart.splice(deleteIndex, 1);
+    }
+    setCart(newCart);
+
+  }
+
+
+
+
+
   return (
     <div>
       <Header></Header>
-      <Cart cart={cart}></Cart>
+      <Cart cart={cart} deleteAll={deleteAll} singleCartRemove={singleCartRemove}></Cart>
       <Categorys></Categorys>
 
-      <Products products={products} cartHandler={cartHandler}></Products>
+      <Products products={products} cartHandler={cartHandler} ></Products>
       <Footer></Footer>
     </div>
   );
